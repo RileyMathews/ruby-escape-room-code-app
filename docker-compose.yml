@@ -1,0 +1,19 @@
+version: '3.7'
+services: 
+  app:
+    build:
+      context: .
+      dockerfile: ./.docker/dev/Dockerfile
+    container_name: ruby-escape-room-code-app
+    image: ruby-escape-room-code-app-dev:0.0.1
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app:delegated
+      - bundle:/bundle
+    ports: 
+      - 3000:3000
+    env_file: ./.env
+  
+volumes: 
+  bundle:
