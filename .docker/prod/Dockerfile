@@ -8,5 +8,7 @@ COPY . .
 
 RUN bundle install
 
+EXPOSE 3000
+
 ENTRYPOINT [ "" ]
 CMD [ "bundle", "exec", "puma" ]
