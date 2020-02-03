@@ -13,6 +13,7 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-html-matchers'
   gem 'rack-test'
   gem 'rspec'
 end
