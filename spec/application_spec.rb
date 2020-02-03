@@ -11,7 +11,10 @@ RSpec.describe Sinatra::Application do
     it ' returns hello world' do
       get '/'
 
-      expect(last_response.body).to have_tag('h1', text: 'Hello world')
+      expect(last_response.body).to have_tag('form', with: { action: '/', method: 'post' }) do
+        with_tag 'input#game_code', with: { type: 'text' }
+        with_tag 'input#submit', with: { text: 'submit' }
+      end
     end
   end
 end
