@@ -17,3 +17,7 @@ group :test do
   gem 'rack-test'
   gem 'rspec'
 end
+
+group :test, :development do
+  gem 'pry'
+end

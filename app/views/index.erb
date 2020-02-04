@@ -2,9 +2,12 @@
 <html>
   <head></head>
   <body>
+    <% if @failure %>
+      <h1>Wrong code, try again!</h1>
+    <% end %>
     <h1>Enter Code</h1>
     <form action="/" method="post">
-      <input type="text" id="game_code" />
+      <input type="text" id="game_code" name="game_code"/>
       <input type="submit" id="submit" value="submit" />
     </form>
   </body>
