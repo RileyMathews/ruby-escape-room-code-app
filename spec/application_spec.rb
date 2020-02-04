@@ -13,7 +13,7 @@ RSpec.describe Sinatra::Application do
 
       expect(last_response.body).to have_tag('form', with: { action: '/', method: 'post' }) do
         with_tag 'input#game_code', with: { type: 'text' }
-        with_tag 'input#submit', with: { text: 'submit' }
+        with_tag 'input#submit', with: { value: 'submit', type: 'submit' }
       end
     end
   end
