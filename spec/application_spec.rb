@@ -24,7 +24,7 @@ RSpec.describe Sinatra::Application do
         post '/', game_code: ENV['GAME_CODE']
 
         expect(last_response.body).to have_tag('strong', text: 'Congrats!')
-        expect(last_response.body).to have_tag('span', text: 'You Win!!')
+        expect(last_response.body).to have_tag('span', text: 'You Escaped!!')
       end
     end
 
