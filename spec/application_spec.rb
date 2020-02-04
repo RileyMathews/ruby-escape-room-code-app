@@ -8,7 +8,7 @@ RSpec.describe Sinatra::Application do
   include RSpecHtmlMatchers
 
   describe 'get /' do
-    it 'returns hello world' do
+    it 'returns the form' do
       get '/'
 
       expect(last_response.body).to have_tag('form', with: { action: '/', method: 'post' }) do
@@ -23,7 +23,8 @@ RSpec.describe Sinatra::Application do
       it 'renders the success page' do
         post '/', game_code: ENV['GAME_CODE']
 
-        expect(last_response.body).to have_tag('h1', text: 'Success, you win!')
+        expect(last_response.body).to have_tag('strong', text: 'Congrats!')
+        expect(last_response.body).to have_tag('span', text: 'You Win!!')
       end
     end
 
@@ -31,7 +32,7 @@ RSpec.describe Sinatra::Application do
       it 'renders the form again with a failure message' do
         post '/', game_code: (ENV['GAME_CODE'].to_i + 2).to_s
 
-        expect(last_response.body).to have_tag('h1', text: 'Wrong code, try again!')
+        expect(last_response.body).to have_tag('strong', text: 'Wrong Code.')
         expect(last_response.body).to have_tag('form', with: { action: '/', method: 'post' }) do
           with_tag 'input#game_code', with: { type: 'text' }
           with_tag 'input#submit', with: { value: 'submit', type: 'submit' }
